@@ -4,21 +4,23 @@
   import { geolocationImplemented, getCurrentPlace } from "../../getlocation";
 
   const dispatch = createEventDispatcher<{
-    found: { place: Place };
-    error: { error: unknown };
+    input: { place: Place };
   }>();
 
   async function dispatchCurrentLocation() {
     try {
       const place = await getCurrentPlace();
 
-      dispatch("found", { place });
+      dispatch("input", { place });
     } catch (error) {
-      dispatch("error", { error });
+      alert(`Failed to get the current location: ${error}`);
     }
   }
 </script>
 
 {#if geolocationImplemented}
-  <button on:click={dispatchCurrentLocation}>Current</button>
+  <button
+    class="button is-primary is-fullwidth"
+    on:click={dispatchCurrentLocation}>Move to the current location</button
+  >
 {/if}

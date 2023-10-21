@@ -5,17 +5,12 @@
   import { Map } from "./Map";
 
   let place: Place;
+
+  function setPlace(ev: CustomEvent<{ place: Place }>) {
+    place = ev.detail.place;
+  }
 </script>
 
-<LocationSearch
-  on:found={(ev) => {
-    place = ev.detail.places[0];
-  }}
-  on:error
-/>
-<CurrentLocationButton
-  on:found={(ev) => {
-    place = ev.detail.place;
-  }}
-/>
 <Map on:input point={place} />
+<CurrentLocationButton on:input={setPlace} />
+<LocationSearch on:input={setPlace} />
