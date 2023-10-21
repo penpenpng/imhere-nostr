@@ -12,6 +12,7 @@
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^2.4.2",
     "@tsconfig/svelte": "^5.0.0",
+    "@types/latlon-geohash": "^2.0.2",
     "@types/svelte-leafletjs": "^0.8.4",
     "@typescript-eslint/eslint-plugin": "^6.8.0",
     "@typescript-eslint/parser": "^6.8.0",
@@ -27,6 +28,7 @@
     "vite": "^4.4.5"
   },
   "dependencies": {
+    "latlon-geohash": "^2.0.0",
     "leaflet": "^1.9.4",
     "svelte-leafletjs": "^0.10.0"
   }

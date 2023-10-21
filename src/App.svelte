@@ -1,4 +1,5 @@
 <script lang="ts">
+  import LocationInput from "./lib/components/LocationInput/LocationInput.svelte";
 </script>
 
-<main />
+<LocationInput on:input={(ev) => console.log(ev.detail.mapPoint)} />
