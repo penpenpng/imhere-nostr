@@ -28,11 +28,13 @@
       <div class="modal-background" />
       <div class="modal-content">
         <div class="card">
-          <header class="card-header">
-            <p class="card-header-title">
-              <slot name="header" />
-            </p>
-          </header>
+          {#if $$slots.header}
+            <header class="card-header">
+              <p class="card-header-title">
+                <slot name="header" />
+              </p>
+            </header>
+          {/if}
           <div class="card-content">
             <slot name="content" />
           </div>
