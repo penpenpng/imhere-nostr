@@ -30,6 +30,6 @@
       on:click={() => dispatch("input", { mapPoint })}>Post</button
     >
   {:catch err}
-    <span style="color:red;">{err}</span>
+    <span class="has-text-danger">{err}</span>
   {/await}
 </Marker>
