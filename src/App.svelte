@@ -5,16 +5,10 @@
   let modalShown = false;
 </script>
 
-{#if modalShown}
-  <Modal
-    on:close={() => {
-      modalShown = false;
-    }}
-  >
-    <div slot="header">title</div>
-    <div slot="content">hello</div>
-  </Modal>
-{/if}
+<Modal bind:show={modalShown}>
+  <div slot="header">title</div>
+  <div slot="content">hello</div>
+</Modal>
 <LocationInput
   on:input={(ev) => {
     console.log(ev.detail.mapPoint);
