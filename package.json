@@ -30,6 +30,7 @@
   "dependencies": {
     "latlon-geohash": "^2.0.0",
     "leaflet": "^1.9.4",
-    "svelte-leafletjs": "^0.10.0"
+    "svelte-leafletjs": "^0.10.0",
+    "svelte-portal": "^2.2.0"
   }
 }
