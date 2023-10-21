@@ -23,12 +23,23 @@
     {:else}
       <b class="has-text-grey-light">{displayLatLng(place.latLng)}</b>
     {/if}
-    <br />
-    {place.display_name ?? ""}
-    <button
-      class="button is-info is-small is-fullwidth"
-      on:click={() => dispatch("input", { mapPoint })}>Post</button
-    >
+
+    <div>
+      {place.display_name ?? ""}
+    </div>
+
+    {#if window.nostr}
+      <button
+        class="button is-info is-small is-fullwidth"
+        on:click={() => dispatch("input", { mapPoint })}
+      >
+        Post
+      </button>
+    {:else}
+      <div class="notification is-danger is-light p-2">
+        Install NIP-07 to share on Nostr
+      </div>
+    {/if}
   {:catch err}
     <span class="has-text-danger">{err}</span>
   {/await}
