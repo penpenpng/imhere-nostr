@@ -6,5 +6,5 @@
 
 <MapMarker latLng={[0, 0]}>
   {note}
-  <button>Update</button>
+  <button class="button">Update</button>
 </MapMarker>

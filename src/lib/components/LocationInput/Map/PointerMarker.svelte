@@ -15,7 +15,9 @@
   {:then place}
     <b>{place.name ?? "No Data"}</b>
     {place.display_name ?? ""}
-    <button on:click={() => dispatch("input", { mapPoint })}>Post</button>
+    <button class="button" on:click={() => dispatch("input", { mapPoint })}
+      >Post</button
+    >
   {:catch err}
     <span style="color:red;">{err}</span>
   {/await}
