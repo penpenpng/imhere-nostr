@@ -34,7 +34,7 @@
         Post
       </button>
     {:else}
-      <div class="notification is-danger is-light p-2">
+      <div class="notification is-danger is-light p-2 mt-2">
         Install NIP-07 to share on Nostr
       </div>
     {/if}
