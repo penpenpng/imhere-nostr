@@ -8,6 +8,7 @@
   import { reverse, type Place } from "../../../nominatim";
   import type { MapPoint } from "../../../types";
   import PointerMarker from "./PointerMarker.svelte";
+  import { normalizeLatLng } from "../../../latlng";
 
   export let point: Place;
   $: if (point) {
@@ -29,11 +30,11 @@
     map = leafletMap.getMap();
 
     map.addEventListener("click", (ev) => {
-      const { lat, lng } = ev.latlng;
+      let { lat, lng } = ev.latlng;
 
       mapPoint = {
         latLng: [lat, lng],
-        place: reverse([lat, lng]),
+        place: reverse(normalizeLatLng([lat, lng])),
       };
     });
   });

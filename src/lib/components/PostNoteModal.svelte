@@ -2,7 +2,7 @@
   import { createEventDispatcher } from "svelte";
   import type { Place } from "../nominatim";
   import { postContentWithLocation } from "../nostr";
-  import { displayLatLng } from "../text";
+  import { displayLatLng } from "../latlng";
   import Modal from "./Modal.svelte";
 
   export let place: Place;

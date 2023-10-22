@@ -1,4 +1,5 @@
 import Geohash from "latlon-geohash";
+import { normalizeLatLng } from "./latlng";
 
 /** https://nominatim.org/release-docs/latest/api/Search/ */
 export async function search(q: string): Promise<Place[]> {
@@ -60,8 +61,10 @@ async function get<T = unknown>(
 }
 
 function toPlace(place: any): Place {
-  const lat = Number(place.lat);
-  const lng = Number(place.lon);
+  let lat = Number(place.lat);
+  let lng = Number(place.lon);
+
+  [lat, lng] = normalizeLatLng([lat, lng]);
 
   return {
     ...place,

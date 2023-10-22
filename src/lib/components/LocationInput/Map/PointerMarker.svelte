@@ -3,7 +3,7 @@
 
   import type { MapPoint } from "../../../types";
   import Marker from "./Marker.svelte";
-  import { displayLatLng } from "../../../text";
+  import { displayLatLng } from "../../../latlng";
 
   export let mapPoint: MapPoint;
 
