@@ -33,7 +33,11 @@ export async function postContentWithLocation(params: PostParams) {
 }
 
 async function getRelays(): Promise<string[]> {
-  const FALLBACK_RELAYS = ["wss://yabu.me"];
+  const FALLBACK_RELAYS = [
+    "wss://yabu.me",
+    "wss://nos.lol",
+    "wss://relay.damus.io",
+  ];
 
   try {
     const result = await window.nostr.getRelays?.();
