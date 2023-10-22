@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { createEventDispatcher } from "svelte";
   import type { Place } from "../nominatim";
   import { postContentWithLocation } from "../nostr";
   import { displayLatLng } from "../latlng";
@@ -8,13 +7,11 @@
   export let place: Place;
 
   let value = "";
-  let processing = false;
+  let posted = false;
   let errorMessage = "";
 
-  const dispatch = createEventDispatcher<{ close: void }>();
-
   function post() {
-    if (processing) {
+    if (posted) {
       return;
     }
     if (!value) {
@@ -22,15 +19,12 @@
       return;
     }
 
-    processing = true;
+    posted = true;
 
     postContentWithLocation({
       content: value,
       place,
     });
-
-    processing = false;
-    dispatch("close");
   }
 
   function onKeydown(ev: KeyboardEvent) {
@@ -65,7 +59,19 @@
       {/if}
     </div>
 
-    <button class="button is-info is-pulled-right" on:click={post}>Post</button>
+    <button
+      class="button is-info is-pulled-right px-5"
+      disabled={posted}
+      on:click={post}>{posted ? "Done!" : "Post"}</button
+    >
     <div class="is-clearfix" />
+    {#if posted}
+      <div class="notification is-success is-light p-2 mt-2 is-size-7">
+        Your location has been shared on Nostr! Check it out on <a
+          href="https://mapnos.vercel.app/"
+          target="_blank">mapnos</a
+        >.
+      </div>
+    {/if}
   </div>
 </Modal>
