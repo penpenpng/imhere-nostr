@@ -63,7 +63,7 @@
 </form>
 
 {#if candidates}
-  <div class="field">
+  <div class="field negative-margin-top">
     <div class="control">
       <div class="select is-fullwidth">
         <select class="is-fullwidth" bind:value={place}>
@@ -78,3 +78,9 @@
     </div>
   </div>
 {/if}
+
+<style>
+  .negative-margin-top {
+    margin-block: -0.3rem;
+  }
+</style>

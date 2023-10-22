@@ -63,6 +63,6 @@
 
 <style>
   .map-container {
-    height: 500px;
+    height: 70svh;
   }
 </style>

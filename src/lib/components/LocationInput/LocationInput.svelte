@@ -12,5 +12,10 @@
 </script>
 
 <Map on:input point={place} />
-<CurrentLocationButton on:input={setPlace} />
-<LocationSearch on:input={setPlace} />
+
+<div class="my-2 mx-4">
+  <div class="my-4">
+    <CurrentLocationButton on:input={setPlace} />
+  </div>
+  <LocationSearch on:input={setPlace} />
+</div>

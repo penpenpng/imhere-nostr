@@ -14,11 +14,13 @@
   {#await mapPoint.place}
     Loading...
   {:then place}
-    {#if place.name}
-      <b>{place.name}</b>
-    {:else}
-      <b class="has-text-grey-light">{displayLatLng(place.latLng)}</b>
-    {/if}
+    <div class="mb-1">
+      {#if place.name}
+        <b>{place.name}</b>
+      {:else}
+        <b class="has-text-grey-light">{displayLatLng(place.latLng)}</b>
+      {/if}
+    </div>
 
     <div>
       {place.display_name ?? ""}
@@ -26,7 +28,7 @@
 
     {#if window.nostr}
       <button
-        class="button is-info is-small is-fullwidth"
+        class="button is-info is-small is-fullwidth mt-2"
         on:click={() => dispatch("input", { mapPoint })}
       >
         Post

@@ -42,7 +42,7 @@
 
 <Modal on:close>
   <div slot="content">
-    <div>
+    <div class="mb-1">
       I'm at
       {#if place.name}
         <b>{place.name}</b>

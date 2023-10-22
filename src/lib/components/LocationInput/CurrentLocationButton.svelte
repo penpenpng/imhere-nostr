@@ -25,9 +25,13 @@
 </script>
 
 {#if geolocationImplemented}
-  <button
-    class="button is-primary is-fullwidth"
-    class:is-loading={processing}
-    on:click={dispatchCurrentLocation}>Move to the current location</button
-  >
+  <div class="field">
+    <div class="control">
+      <button
+        class="button is-primary is-fullwidth"
+        class:is-loading={processing}
+        on:click={dispatchCurrentLocation}>Move to the current location</button
+      >
+    </div>
+  </div>
 {/if}
