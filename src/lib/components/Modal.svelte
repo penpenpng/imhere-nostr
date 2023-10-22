@@ -1,52 +1,49 @@
 <script lang="ts">
+  import { createEventDispatcher, onMount } from "svelte";
   import Portal from "svelte-portal";
 
-  export let show = false;
+  const dispatch = createEventDispatcher<{ close: void }>();
 
-  function modalContext(node: Node) {
+  onMount(() => {
     document.querySelector("#app")?.setAttribute("aria-hidden", "true");
 
     const listner = (ev: KeyboardEvent) => {
       if (ev.key === "Escape") {
-        show = false;
+        dispatch("close");
       }
     };
     document.addEventListener("keydown", listner);
 
-    return {
-      destroy() {
-        document.querySelector("#app")?.removeAttribute("aria-hidden");
-        document.removeEventListener("keydown", listner);
-      },
+    return () => {
+      document.querySelector("#app")?.removeAttribute("aria-hidden");
+      document.removeEventListener("keydown", listner);
     };
-  }
+  });
 </script>
 
-{#if show}
-  <Portal target="#modal">
-    <div use:modalContext class="modal is-active">
-      <div class="modal-background" />
-      <div class="modal-content">
-        <div class="card">
-          {#if $$slots.header}
-            <header class="card-header">
-              <p class="card-header-title">
-                <slot name="header" />
-              </p>
-            </header>
-          {/if}
-          <div class="card-content">
-            <slot name="content" />
-          </div>
+<Portal target="#modal">
+  <div class="modal is-active">
+    <div class="modal-background" />
+    <div class="modal-content">
+      <div class="card">
+        {#if $$slots.header}
+          <header class="card-header">
+            <p class="card-header-title">
+              <slot name="header" />
+            </p>
+          </header>
+        {/if}
+        <div class="card-content">
+          <slot name="content" />
         </div>
       </div>
-      <button
-        class="modal-close is-large"
-        aria-label="close"
-        on:click={() => {
-          show = false;
-        }}
-      />
     </div>
-  </Portal>
-{/if}
+    <button
+      class="modal-close is-large"
+      aria-label="close"
+      on:click={() => {
+        dispatch("close");
+      }}
+    />
+  </div>
+</Portal>

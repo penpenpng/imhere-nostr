@@ -3,15 +3,11 @@
 
   import type { MapPoint } from "../../../types";
   import Marker from "./Marker.svelte";
+  import { displayLatLng } from "../../../text";
 
   export let mapPoint: MapPoint;
 
   const dispatch = createEventDispatcher<{ input: { mapPoint: MapPoint } }>();
-
-  function displayLatLng(latLng: [number, number]) {
-    const [lat, lng] = latLng.map((v) => Math.round(v * 10 ** 6) / 10 ** 6);
-    return `(${lat}, ${lng})`;
-  }
 </script>
 
 <Marker latLng={mapPoint.latLng}>

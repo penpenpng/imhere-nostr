@@ -1,14 +1,23 @@
 <script lang="ts">
   import LocationInput from "./lib/components/LocationInput/LocationInput.svelte";
-  import PostNodeModal from "./lib/components/PostNodeModal.svelte";
+  import PostNoteModal from "./lib/components/PostNoteModal.svelte";
+  import type { Place } from "./lib/nominatim";
+  import type { MapPoint } from "./lib/types";
 
-  let modalShown = false;
+  let showModal = false;
+  let place: Place;
+
+  async function openPostNoteModal(mapPoint: MapPoint) {
+    place = await mapPoint.place;
+    showModal = true;
+  }
 </script>
 
-<PostNodeModal bind:show={modalShown} />
+{#if showModal}
+  <PostNoteModal {place} on:close={() => void (showModal = false)} />
+{/if}
 <LocationInput
   on:input={(ev) => {
-    console.log(ev.detail.mapPoint);
-    modalShown = true;
+    openPostNoteModal(ev.detail.mapPoint);
   }}
 />
