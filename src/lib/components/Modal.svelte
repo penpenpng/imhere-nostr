@@ -23,7 +23,12 @@
 
 <Portal target="#modal">
   <div class="modal is-active">
-    <div class="modal-background" />
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <!-- svelte-ignore a11y-no-static-element-interactions -->
+    <div
+      class="modal-background"
+      on:click|self={() => void dispatch("close")}
+    />
     <div class="modal-content">
       <div class="card">
         {#if $$slots.header}
@@ -41,9 +46,7 @@
     <button
       class="modal-close is-large"
       aria-label="close"
-      on:click={() => {
-        dispatch("close");
-      }}
+      on:click={() => void dispatch("close")}
     />
   </div>
 </Portal>
