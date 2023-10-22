@@ -30,7 +30,7 @@
       <button
         class="button is-primary is-fullwidth"
         class:is-loading={processing}
-        on:click={dispatchCurrentLocation}>Move to the current location</button
+        on:click={dispatchCurrentLocation}>Move to your location</button
       >
     </div>
   </div>
